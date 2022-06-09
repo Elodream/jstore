@@ -4,10 +4,16 @@
 
 #include <QMainWindow>
 #include <QtWebEngineWidgets/QtWebEngineWidgets>
+#include"downloader.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
+
+class WebPage:public QWebEnginePage
+{
+
+};
 
 class MainWindow : public QMainWindow
 {
@@ -19,6 +25,8 @@ public:
 
 private:
     QWebEngineView *store;
+    Downloader * Ctrl;
+     WebPage * storehome;
     QLabel *j;
     Ui::MainWindow *ui;
 };

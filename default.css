@@ -1,15 +1,15 @@
 QTabBar::tab{
 height:36px;
-margin:15px;
-padding:10px 20px;
+margin:20px;
+padding:10px 0px;
 border:none;
 font-size:20px;
-border-radius:10px;
 }
 
 
 QTabBar::tab:hover{
-color:#01875f;
+color:#f4368e;
+border-bottom:1px solid #f4368e;
 }
 QTabBar::tab:selected{
 background:#eee;

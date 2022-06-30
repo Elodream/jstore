@@ -1,8 +1,8 @@
-QT       += core gui
+QT  += core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 QT += webenginewidgets
 QT += network
-
+QT += webchannel
 CONFIG += c++17
 CONFIG += static release
 # You can make your code fail to compile if it uses deprecated APIs.

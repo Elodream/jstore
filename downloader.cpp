@@ -1,12 +1,20 @@
 #include "downloader.h"
 #include<QtWidgets>
-Downloader::Downloader()
+
+
+void Downloader::run()
 {
-    // Initialize manager ...
+
+}
+Downloader::Downloader(int mode)
+{
+    this->mode=mode;
     manager = new QNetworkAccessManager();
     // ... and connect the signal to the handler
-    connect(manager, &QNetworkAccessManager::finished, this, &Downloader::onResult);
+    connect(manager, &QNetworkAccessManager::finished, this, &Downloader::downloadfinished);
+
 }
+
 
 void Downloader::data(QUrl url)
 {
@@ -17,9 +25,43 @@ void Downloader::data(QUrl url)
 
 }
 
-void Downloader::onResult(QNetworkReply *reply)
+void Downloader::downloadfinished(QNetworkReply *reply)
 {
-   m_DownloadedData=reply->readAll();
-   QMessageBox a (QMessageBox::NoIcon,"yo",m_DownloadedData);
-   a.exec();
+
+   auto fdata=reply->readAll();
+
+   QTemporaryFile f;
+f.setAutoRemove(false);
+   if(f.open())
+   {
+      f.write(fdata);
+    f.seek(0);
+   }
+ f.close();
+std::cout<<fdata.toStdString();
+
+   if(mode==USE)
+   {
+       QProcess * process = new QProcess(this->parent());
+           QString file = "emu/jsinfinity/shell.exe";
+
+        process->setProcessChannelMode(QProcess::MergedChannels);
+
+           process->startDetached(file,{f.fileName()});
+     //auto n=_execlp("emu/jsinfinity/shell.exe","emu/jsinfinity/shell.exe",f.fileName().toStdString().c_str(),NULL);
+           std::cout<<process->readLine().toStdString();
+   }
+   else if(mode==SAVE)
+   {
+
+   }
+
+    reply->deleteLater();
+
+}
+
+std::string  Downloader::getdata()
+{
+
+     return this->m_DownloadedData;
 }

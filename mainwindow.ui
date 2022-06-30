@@ -19,8 +19,29 @@
      <layout class="QHBoxLayout" name="horizontalLayout">
       <item>
        <widget class="QTabWidget" name="tabWidget">
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="tabPosition">
+         <enum>QTabWidget::West</enum>
+        </property>
         <property name="currentIndex">
          <number>1</number>
+        </property>
+        <property name="elideMode">
+         <enum>Qt::ElideMiddle</enum>
+        </property>
+        <property name="documentMode">
+         <bool>true</bool>
+        </property>
+        <property name="tabsClosable">
+         <bool>true</bool>
+        </property>
+        <property name="movable">
+         <bool>true</bool>
+        </property>
+        <property name="tabBarAutoHide">
+         <bool>false</bool>
         </property>
         <widget class="QWidget" name="tab">
          <attribute name="title">
@@ -28,6 +49,10 @@
          </attribute>
         </widget>
         <widget class="QWidget" name="tab_2">
+         <attribute name="icon">
+          <iconset>
+           <normaloff>../build-Jstore-Desktop_Qt_6_2_4_MSVC2019_64bit-Release/release/house-solid.svg</normaloff>../build-Jstore-Desktop_Qt_6_2_4_MSVC2019_64bit-Release/release/house-solid.svg</iconset>
+         </attribute>
          <attribute name="title">
           <string>Tab 2</string>
          </attribute>

@@ -30,4 +30,6 @@ private:
     QLabel *j;
     Ui::MainWindow *ui;
 };
+
+
 #endif // MAINWINDOW_H
